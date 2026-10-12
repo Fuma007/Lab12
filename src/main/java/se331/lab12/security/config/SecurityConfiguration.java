@@ -28,11 +28,15 @@ public class SecurityConfiguration {
     http
             .csrf((crsf) -> crsf.disable())
 
-
-            .sessionManagement((session) ->{
+            .sessionManagement((session) -> {
               session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);
             })
 
+            // ADDED: login endpoints stay open, everything else needs a token
+            .authorizeHttpRequests((authorize) -> authorize
+                    .requestMatchers("/api/v1/auth/**").permitAll()
+                    .anyRequest().authenticated()
+            )
 
             .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
             .logout((logout) -> {
