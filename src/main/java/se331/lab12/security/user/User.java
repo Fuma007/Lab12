@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import se331.lab.security.token.Token;
+import se331.lab12.security.token.Token;
 
 import java.util.ArrayList;
 import java.util.Collection;
